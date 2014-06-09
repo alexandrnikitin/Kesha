@@ -8,5 +8,10 @@ namespace Kesha.Default
         {
             return Activator.CreateInstance<TCache>();
         }
+
+        public object Create(Type cacheType)
+        {
+            return Activator.CreateInstance(cacheType);
+        }
     }
 }

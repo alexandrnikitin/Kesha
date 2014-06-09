@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 
 namespace Kesha.Autofac
 {
@@ -14,6 +15,11 @@ namespace Kesha.Autofac
         public TCache Create<TCache>()
         {
             return _lifetimescope.Resolve<TCache>();
+        }
+
+        public object Create(Type cacheType)
+        {
+            return _lifetimescope.Resolve(cacheType);
         }
     }
 }
