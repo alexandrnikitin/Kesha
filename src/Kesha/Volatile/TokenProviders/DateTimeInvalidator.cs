@@ -2,28 +2,28 @@
 
 namespace Kesha.Volatile.TokenProviders
 {
-    public class DateTimeInvalidationTokenProvider : IDateTimeInvalidationTokenProvider
+    public class DateTimeInvalidator : IDateTimeInvalidator
     {
-        public IInvalidationToken InvalidateAfter(TimeSpan period)
+        public IToken InvalidateAfter(TimeSpan period)
         {
-            return new InvalidationToken(period);
+            return new Token(period);
         }
 
-        public IInvalidationToken InvalidateAtUtc(DateTime dateTimeUtc)
+        public IToken InvalidateAtUtc(DateTime dateTimeUtc)
         {
-            return new InvalidationToken(dateTimeUtc);
+            return new Token(dateTimeUtc);
         }
 
-        private class InvalidationToken : IInvalidationToken
+        private class Token : IToken
         {
             private readonly DateTime _invalidateDateTimeUtc;
 
-            public InvalidationToken(DateTime dateTimeUtc)
+            public Token(DateTime dateTimeUtc)
             {
                 _invalidateDateTimeUtc = dateTimeUtc;
             }
 
-            public InvalidationToken(TimeSpan period)
+            public Token(TimeSpan period)
             {
                 _invalidateDateTimeUtc = DateTime.UtcNow.Add(period);
             }

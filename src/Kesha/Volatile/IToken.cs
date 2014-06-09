@@ -1,6 +1,6 @@
 ﻿namespace Kesha.Volatile
 {
-    public interface IInvalidationToken
+    public interface IToken
     {
         bool IsValid { get; }
     }

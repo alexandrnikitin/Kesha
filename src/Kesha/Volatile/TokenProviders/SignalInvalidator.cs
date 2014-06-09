@@ -2,15 +2,15 @@
 
 namespace Kesha.Volatile.TokenProviders
 {
-    public class SignalInvalidationTokenProvider : ISignalInvalidationTokenProvider
+    public class SignalInvalidator : ISignalInvalidator
     {
-        private readonly IDictionary<object, InvalidationToken> _tokens = new Dictionary<object, InvalidationToken>();
+        private readonly IDictionary<object, Token> _tokens = new Dictionary<object, Token>();
 
         public void Trigger<T>(T signal)
         {
             lock (_tokens)
             {
-                InvalidationToken token;
+                Token token;
                 if (_tokens.TryGetValue(signal, out token))
                 {
                     _tokens.Remove(signal);
@@ -19,14 +19,14 @@ namespace Kesha.Volatile.TokenProviders
             }
         }
 
-        public IInvalidationToken InvalidateWhen<T>(T signal)
+        public IToken InvalidateWhen<T>(T signal)
         {
             lock (_tokens)
             {
-                InvalidationToken token;
+                Token token;
                 if (!_tokens.TryGetValue(signal, out token))
                 {
-                    token = new InvalidationToken();
+                    token = new Token();
                     _tokens[signal] = token;
                 }
 
@@ -34,11 +34,11 @@ namespace Kesha.Volatile.TokenProviders
             }
         }
 
-        private class InvalidationToken : IInvalidationToken
+        private class Token : IToken
         {
             #region Constructors and Destructors
 
-            public InvalidationToken()
+            public Token()
             {
                 IsValid = true;
             }

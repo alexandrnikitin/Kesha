@@ -14,7 +14,7 @@ namespace Kesha.Volatile.Caches
             CacheEntry cacheEntry;
             if (_items.TryGetValue(key, out cacheEntry))
             {
-                if (cacheEntry.InvalidationTokens.All(t => t != null && t.IsValid))
+                if (cacheEntry.Tokens.All(t => t != null && t.IsValid))
                 {
                     item = cacheEntry.Result;
                     return true;
@@ -37,37 +37,37 @@ namespace Kesha.Volatile.Caches
             return _items.TryRemove(key, out value);
         }
 
-        public void SetItem(TKey key, TResult item, IInvalidationToken invalidationToken)
+        public void SetItem(TKey key, TResult item, IToken token)
         {
             var cacheEntry = new CacheEntry();
             cacheEntry.Result = item;
-            cacheEntry.AddToken(invalidationToken);
+            cacheEntry.Attach(token);
             
             _items.AddOrUpdate(key, cacheEntry, (k, i) => cacheEntry);
         }
 
-        public void SetItem(TKey key, Func<TResult> itemFunc, Func<IInvalidationToken> tokenFunc)
+        public void SetItem(TKey key, Func<TResult> itemFunc, Func<IToken> tokenFunc)
         {
             throw new NotImplementedException();
         }
 
         private class CacheEntry
         {
-            private readonly IList<IInvalidationToken> _invalidationTokens = new List<IInvalidationToken>();
+            private readonly IList<IToken> _tokens = new List<IToken>();
 
             public TResult Result { get; set; }
 
-            public IEnumerable<IInvalidationToken> InvalidationTokens
+            public IEnumerable<IToken> Tokens
             {
                 get
                 {
-                    return _invalidationTokens;
+                    return _tokens;
                 }
             }
 
-            public void AddToken(IInvalidationToken invalidationToken)
+            public void Attach(IToken token)
             {
-                _invalidationTokens.Add(invalidationToken);
+                _tokens.Add(token);
             }
         }
 
