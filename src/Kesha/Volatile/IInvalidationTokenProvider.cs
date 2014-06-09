@@ -1,4 +1,4 @@
-﻿namespace Core.Volatile
+﻿namespace Kesha.Volatile
 {
     public interface IInvalidationTokenProvider
     {

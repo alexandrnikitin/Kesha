@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 
-namespace Core.Default
+namespace Kesha.Default
 {
     public class DefaultCacheHolder : ICacheHolder
     {

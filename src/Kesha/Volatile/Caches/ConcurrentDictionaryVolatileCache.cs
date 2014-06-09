@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Core.Volatile.Caches
+namespace Kesha.Volatile.Caches
 {
     public class ConcurrentDictionaryVolatileCache<TKey, TResult> : IVolatileCache<TKey, TResult>
     {

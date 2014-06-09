@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
-namespace Core.Caches
+namespace Kesha.Caches
 {
     public class ConcurrentDictionaryCache<TKey, TResult> : ICache<TKey, TResult>
     {

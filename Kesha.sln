@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "src\Core\Core.csproj", "{FAA7D2AC-210B-4988-8C5D-0732C3DD7C7A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesha", "src\Kesha\Kesha.csproj", "{FAA7D2AC-210B-4988-8C5D-0732C3DD7C7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Tests", "test\Core.Tests\Core.Tests.csproj", "{E8F3ADD8-6944-4DAE-B023-170615581A07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesha.Tests", "src\Kesha.Tests\Kesha.Tests.csproj", "{E8F3ADD8-6944-4DAE-B023-170615581A07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

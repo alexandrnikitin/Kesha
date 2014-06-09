@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Core.Volatile.TokenProviders
+namespace Kesha.Volatile.TokenProviders
 {
     public class SignalInvalidationTokenProvider : ISignalInvalidationTokenProvider
     {

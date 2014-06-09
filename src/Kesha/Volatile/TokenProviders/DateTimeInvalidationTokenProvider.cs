@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.Volatile.TokenProviders
+namespace Kesha.Volatile.TokenProviders
 {
     public class DateTimeInvalidationTokenProvider : IDateTimeInvalidationTokenProvider
     {

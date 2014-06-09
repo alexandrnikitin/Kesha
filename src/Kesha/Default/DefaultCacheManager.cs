@@ -1,6 +1,6 @@
 using System;
 
-namespace Core.Default
+namespace Kesha.Default
 {
     public class DefaultCacheManager : ICacheManager
     {

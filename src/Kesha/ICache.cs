@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Core
+namespace Kesha
 {
     public interface ICache<TKey, TResult>
     {

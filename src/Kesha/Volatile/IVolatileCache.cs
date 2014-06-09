@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.Volatile
+namespace Kesha.Volatile
 {
     public interface IVolatileCache<TKey, TResult>
     {
