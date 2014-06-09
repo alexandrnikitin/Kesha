@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\..\packages\Autofac.3.4.1\lib\net40\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CachedReportService.cs" />
+    <Compile Include="ICachedReportService.cs" />
     <Compile Include="IReportService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,10 +53,17 @@
     <Compile Include="ReportService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kesha.Autofac\Kesha.Autofac.csproj">
+      <Project>{59ad0d29-dc6b-4aa1-ba65-4c0ef5a265c8}</Project>
+      <Name>Kesha.Autofac</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kesha\Kesha.csproj">
       <Project>{faa7d2ac-210b-4988-8c5d-0732c3dd7c7a}</Project>
       <Name>Kesha</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

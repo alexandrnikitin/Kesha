@@ -11,8 +11,8 @@ namespace Kesha.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterGeneric(typeof(ConcurrentDictionaryCache<,>)).As(typeof(ICache<,>));
-            builder.RegisterGeneric(typeof(ConcurrentDictionaryVolatileCache<,>)).As(typeof(IVolatileCache<,>));
+            builder.RegisterGeneric(typeof(ConcurrentDictionaryCache<,>)).As(typeof(ICache<,>)).AsSelf();
+            builder.RegisterGeneric(typeof(ConcurrentDictionaryVolatileCache<,>)).As(typeof(IVolatileCache<,>)).AsSelf();
 
             builder.RegisterType<SignalInvalidator>().As<ISignalInvalidator>().SingleInstance();
             builder.RegisterType<DateTimeInvalidator>().As<IDateTimeInvalidator>().SingleInstance();

@@ -3,7 +3,7 @@ using Kesha.Caches;
 
 namespace Kesha.ConsoleExample
 {
-    public class CachedReportService : IReportService
+    public class CachedReportService : ICachedReportService
     {
         private const string CacheKey = "CacheKey";
 
