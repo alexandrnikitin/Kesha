@@ -20,7 +20,7 @@ namespace Kesha.Caches
 
         public TResult GetOrSetItem(TKey key, Func<TResult> itemFunc)
         {
-            return _items.GetOrAdd(key, itemFunc());
+            return _items.GetOrAdd(key, k => itemFunc());
         }
 
         public bool IsItemCached(TKey key)
