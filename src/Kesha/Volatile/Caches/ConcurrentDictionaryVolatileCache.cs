@@ -14,7 +14,7 @@ namespace Kesha.Volatile.Caches
             CacheEntry cacheEntry;
             if (_items.TryGetValue(key, out cacheEntry))
             {
-                if (cacheEntry.Tokens.All(t => t != null && t.IsValid))
+                if (cacheEntry.Tokens.All(token => token != null && token.IsValid))
                 {
                     item = cacheEntry.Result;
                     return true;
@@ -39,16 +39,24 @@ namespace Kesha.Volatile.Caches
 
         public void SetItem(TKey key, TResult item, IToken token)
         {
-            var cacheEntry = new CacheEntry();
-            cacheEntry.Result = item;
-            cacheEntry.Attach(token);
-            
-            _items.AddOrUpdate(key, cacheEntry, (k, i) => cacheEntry);
+            var cacheEntry = CreateCacheEntry(item, token);
+            _items.AddOrUpdate(key, cacheEntry, (_, __) => cacheEntry);
         }
 
         public void SetItem(TKey key, Func<TResult> itemFunc, Func<IToken> tokenFunc)
         {
-            throw new NotImplementedException();
+            _items.AddOrUpdate(
+                key,
+                _ => CreateCacheEntry(itemFunc(), tokenFunc()),
+                (_, __) => CreateCacheEntry(itemFunc(), tokenFunc()));
+        }
+
+        private static CacheEntry CreateCacheEntry(TResult item, IToken token)
+        {
+            var cacheEntry = new CacheEntry();
+            cacheEntry.Result = item;
+            cacheEntry.Attach(token);
+            return cacheEntry;
         }
 
         private class CacheEntry
@@ -59,10 +67,7 @@ namespace Kesha.Volatile.Caches
 
             public IEnumerable<IToken> Tokens
             {
-                get
-                {
-                    return _tokens;
-                }
+                get { return _tokens; }
             }
 
             public void Attach(IToken token)
@@ -70,6 +75,5 @@ namespace Kesha.Volatile.Caches
                 _tokens.Add(token);
             }
         }
-
     }
 }
