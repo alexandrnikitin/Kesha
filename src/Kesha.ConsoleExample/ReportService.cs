@@ -1,13 +1,14 @@
+using System;
 using System.Threading;
 
-namespace Kesha.Console.Example
+namespace Kesha.ConsoleExample
 {
     public class ReportService : IReportService
     {
         public Report GetReport()
         {
-            System.Console.WriteLine("Long time work to create report...");
-            Thread.Sleep(1000);
+            Console.WriteLine("Long time work to create report...");
+            Thread.Sleep(3000);
             return new Report();
         }
     }

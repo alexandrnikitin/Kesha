@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Kesha.Default;
 
-namespace Kesha.Console.Example
+namespace Kesha.ConsoleExample
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var cacheHolder = new DefaultCacheHolder();
             var cacheFactory = new DefaultCacheFactory();
@@ -17,13 +14,17 @@ namespace Kesha.Console.Example
             var reportService = new ReportService();
             var cachedReportService = new CachedReportService(cacheManager, reportService);
 
-            System.Console.WriteLine("Getting report...");
+            Console.WriteLine("Getting report...");
             var report = cachedReportService.GetReport();
-            System.Console.WriteLine("Getting report...");
+            
+            Console.WriteLine("Getting report...");
             var report2 = cachedReportService.GetReport();
-            System.Console.WriteLine("Reports are equal? : {0}", report == report2);
-            System.Console.WriteLine("Finished");
-            System.Console.ReadKey();
+            
+            Console.WriteLine("Reports are equal? : {0}", report == report2);
+            
+            
+            Console.WriteLine("Finished");
+            Console.ReadKey();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Kesha.Console.Example
+﻿namespace Kesha.ConsoleExample
 {
     public interface IReportService
     {

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesha", "src\Kesha\Kesha.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesha.Tests", "src\Kesha.Tests\Kesha.Tests.csproj", "{E8F3ADD8-6944-4DAE-B023-170615581A07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesha.Console.Example", "src\Kesha.Console.Example\Kesha.Console.Example.csproj", "{5400E0CA-5353-4D14-AE5E-64E9C625F847}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesha.ConsoleExample", "src\Kesha.ConsoleExample\Kesha.ConsoleExample.csproj", "{5400E0CA-5353-4D14-AE5E-64E9C625F847}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,8 +7,8 @@
     <ProjectGuid>{5400E0CA-5353-4D14-AE5E-64E9C625F847}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kesha.Console.Example</RootNamespace>
-    <AssemblyName>Kesha.Console.Example</AssemblyName>
+    <RootNamespace>Kesha.ConsoleExample</RootNamespace>
+    <AssemblyName>Kesha.ConsoleExample</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

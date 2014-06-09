@@ -1,6 +1,7 @@
-﻿using Kesha.Caches;
+﻿using System;
+using Kesha.Caches;
 
-namespace Kesha.Console.Example
+namespace Kesha.ConsoleExample
 {
     public class CachedReportService : IReportService
     {
@@ -19,11 +20,7 @@ namespace Kesha.Console.Example
         public Report GetReport()
         {
             var cache = _cacheManager.Get<ConcurrentDictionaryCache<string, Report>>();
-            return cache.GetOrSetItem(CacheKey, () =>
-            {
-                System.Console.WriteLine("!!!");
-                return _reportService.GetReport();
-            });
+            return cache.GetOrSetItem(CacheKey, () => _reportService.GetReport());
         }
     }
 }
