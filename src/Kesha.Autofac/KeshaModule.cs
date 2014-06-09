@@ -18,7 +18,7 @@ namespace Kesha.Autofac
             builder.RegisterType<DateTimeInvalidator>().As<IDateTimeInvalidator>().SingleInstance();
 
             builder.RegisterType<AutofacCacheFactory>().As<ICacheFactory>();
-            builder.RegisterType<DefaultCacheHolder>().As<ICacheHolder>().SingleInstance();
+            builder.RegisterType<ConcurrentDictionaryCacheHolder>().As<ICacheHolder>().SingleInstance();
             builder.RegisterType<DefaultCacheManager>().As<ICacheManager>();
         }
     }

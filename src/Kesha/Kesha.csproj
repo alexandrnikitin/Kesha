@@ -40,8 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caches\ConcurrentDictionaryCache.cs" />
-    <Compile Include="Default\DefaultCacheFactory.cs" />
-    <Compile Include="Default\DefaultCacheHolder.cs" />
+    <Compile Include="Default\ActivatorCacheFactory.cs" />
+    <Compile Include="Default\ConcurrentDictionaryCacheHolder.cs" />
     <Compile Include="Default\DefaultCacheManager.cs" />
     <Compile Include="ICache.cs" />
     <Compile Include="ICacheAsync.cs" />

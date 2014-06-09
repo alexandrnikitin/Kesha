@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 
 namespace Kesha.Default
 {
-    public class DefaultCacheHolder : ICacheHolder
+    public class ConcurrentDictionaryCacheHolder : ICacheHolder
     {
         private readonly ConcurrentDictionary<CacheKey, object> _caches = new ConcurrentDictionary<CacheKey, object>();
 

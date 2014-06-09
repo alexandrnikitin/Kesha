@@ -2,7 +2,7 @@ using System;
 
 namespace Kesha.Default
 {
-    public class DefaultCacheFactory : ICacheFactory
+    public class ActivatorCacheFactory : ICacheFactory
     {
         public TCache Create<TCache>()
         {

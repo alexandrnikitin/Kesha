@@ -43,8 +43,8 @@ namespace Kesha.ConsoleExample
         private static void PlainExample()
         {
             Console.WriteLine("PlainExample");
-            var cacheHolder = new DefaultCacheHolder();
-            var cacheFactory = new DefaultCacheFactory();
+            var cacheHolder = new ConcurrentDictionaryCacheHolder();
+            var cacheFactory = new ActivatorCacheFactory();
             var cacheManager = new DefaultCacheManager(cacheHolder, cacheFactory);
 
             var reportService = new ReportService();
