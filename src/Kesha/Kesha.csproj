@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caches\ConcurrentDictionaryCache.cs" />
+    <Compile Include="Caches\ConcurrentDictionaryCacheAsync.cs" />
     <Compile Include="Default\ActivatorCacheFactory.cs" />
     <Compile Include="Default\ConcurrentDictionaryCacheHolder.cs" />
     <Compile Include="Default\DefaultCacheManager.cs" />
