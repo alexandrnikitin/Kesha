@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Kesha
 {
     public interface ICacheAsync<TKey, TResult> : ICache<TKey, TResult>
     {
-        void RemoveItemAsync(TKey key);
+        Task RemoveItemAsync(TKey key);
 
-        void SetItemAsync(TKey key, TResult item);
+        Task SetItemAsync(TKey key, TResult item);
 
-        void SetItemAsync(TKey key, Func<TResult> itemFunc);
+        Task SetItemAsync(TKey key, Func<TResult> itemFunc);
 
-        void SetItemsAsync(IEnumerable<KeyValuePair<TKey, TResult>> items);
+        Task SetItemsAsync(IEnumerable<KeyValuePair<TKey, TResult>> items);
     }
 }
