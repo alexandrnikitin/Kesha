@@ -12,9 +12,9 @@ namespace Kesha.Default
             return TryGet(default(object), out cache);
         }
 
-        public bool TryGet<TCacheKey, TCache>(TCacheKey scopeKey, out TCache cache)
+        public bool TryGet<TScope, TCache>(TScope scope, out TCache cache)
         {
-            var cacheKey = new CacheKey(scopeKey, typeof(TCache));
+            var cacheKey = new CacheKey(scope, typeof(TCache));
 
             object cacheFromDictionary;
             if (_caches.TryGetValue(cacheKey, out cacheFromDictionary))
@@ -32,16 +32,16 @@ namespace Kesha.Default
             return TryAdd(default(object), cache);
         }
 
-        public bool TryAdd<TCacheKey, TCache>(TCacheKey scopeKey, TCache cache)
+        public bool TryAdd<TScope, TCache>(TScope scope, TCache cache)
         {
-            var cacheKey = new CacheKey(scopeKey, typeof(TCache));
+            var cacheKey = new CacheKey(scope, typeof(TCache));
             return _caches.TryAdd(cacheKey, cache);
         }
 
         private class CacheKey : Tuple<object, Type>
         {
-            public CacheKey(object area, Type cacheType)
-                : base(area, cacheType)
+            public CacheKey(object scope, Type cacheType)
+                : base(scope, cacheType)
             {
             }
         }
