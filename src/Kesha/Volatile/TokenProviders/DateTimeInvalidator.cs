@@ -30,7 +30,10 @@ namespace Kesha.Volatile.TokenProviders
 
             public bool IsValid
             {
-                get { return DateTime.UtcNow < _invalidateDateTimeUtc; }
+                get
+                {
+                    return DateTime.UtcNow < _invalidateDateTimeUtc;
+                }
             }
         }
     }

@@ -9,6 +9,26 @@ namespace Kesha.Volatile.Caches
     {
         private readonly ConcurrentDictionary<TKey, CacheEntry> _items = new ConcurrentDictionary<TKey, CacheEntry>();
 
+        public bool IsItemCached(TKey key)
+        {
+            TResult item;
+            return TryGetItem(key, out item);
+        }
+
+        public void SetItem(TKey key, TResult item, IToken token)
+        {
+            var cacheEntry = CreateCacheEntry(item, token);
+            _items.AddOrUpdate(key, cacheEntry, (_, __) => cacheEntry);
+        }
+
+        public void SetItem(TKey key, Func<TResult> itemFunc, Func<IToken> tokenFunc)
+        {
+            _items.AddOrUpdate(
+                key, 
+                _ => CreateCacheEntry(itemFunc(), tokenFunc()), 
+                (_, __) => CreateCacheEntry(itemFunc(), tokenFunc()));
+        }
+
         public bool TryGetItem(TKey key, out TResult item)
         {
             CacheEntry cacheEntry;
@@ -25,30 +45,10 @@ namespace Kesha.Volatile.Caches
             return false;
         }
 
-        public bool IsItemCached(TKey key)
-        {
-            TResult item;
-            return TryGetItem(key, out item);
-        }
-
         public bool TryRemoveItem(TKey key)
         {
             CacheEntry value;
             return _items.TryRemove(key, out value);
-        }
-
-        public void SetItem(TKey key, TResult item, IToken token)
-        {
-            var cacheEntry = CreateCacheEntry(item, token);
-            _items.AddOrUpdate(key, cacheEntry, (_, __) => cacheEntry);
-        }
-
-        public void SetItem(TKey key, Func<TResult> itemFunc, Func<IToken> tokenFunc)
-        {
-            _items.AddOrUpdate(
-                key,
-                _ => CreateCacheEntry(itemFunc(), tokenFunc()),
-                (_, __) => CreateCacheEntry(itemFunc(), tokenFunc()));
         }
 
         private static CacheEntry CreateCacheEntry(TResult item, IToken token)
@@ -67,7 +67,10 @@ namespace Kesha.Volatile.Caches
 
             public IEnumerable<IToken> Tokens
             {
-                get { return _tokens; }
+                get
+                {
+                    return _tokens;
+                }
             }
 
             public void Attach(IToken token)

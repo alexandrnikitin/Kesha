@@ -2,8 +2,8 @@
 {
     public interface ISignalInvalidator : ITokenProvider
     {
-        void Trigger<T>(T signal);
-
         IToken InvalidateWhen<T>(T signal);
+
+        void Trigger<T>(T signal);
     }
 }

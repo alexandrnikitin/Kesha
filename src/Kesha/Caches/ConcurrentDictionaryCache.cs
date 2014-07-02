@@ -10,12 +10,10 @@ namespace Kesha.Caches
 
         public IEnumerable<KeyValuePair<TKey, TResult>> Items
         {
-            get { return _items; }
-        }
-
-        public bool TryGetItem(TKey key, out TResult item)
-        {
-            return _items.TryGetValue(key, out item);
+            get
+            {
+                return _items;
+            }
         }
 
         public TResult GetOrSetItem(TKey key, Func<TResult> itemFunc)
@@ -26,12 +24,6 @@ namespace Kesha.Caches
         public bool IsItemCached(TKey key)
         {
             return _items.ContainsKey(key);
-        }
-
-        public bool TryRemoveItem(TKey key)
-        {
-            TResult value;
-            return _items.TryRemove(key, out value);
         }
 
         public void SetItem(TKey key, TResult item)
@@ -50,6 +42,17 @@ namespace Kesha.Caches
             {
                 SetItem(keyValuePair.Key, keyValuePair.Value);
             }
+        }
+
+        public bool TryGetItem(TKey key, out TResult item)
+        {
+            return _items.TryGetValue(key, out item);
+        }
+
+        public bool TryRemoveItem(TKey key)
+        {
+            TResult value;
+            return _items.TryRemove(key, out value);
         }
     }
 }
